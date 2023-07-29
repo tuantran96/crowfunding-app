@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { ErrorBoundary, withErrorBoundary } from "react-error-boundary";
+import ErrorComponent from "components/common/ErrorComponent";
 
 const ButtonGoogle = ({ text = "Sign up with google", onClick = () => {} }) => {
   return (
@@ -20,5 +21,5 @@ ButtonGoogle.propTypes = {
 };
 
 export default withErrorBoundary(ButtonGoogle, {
-  FallbackComponent: <ErrorBoundary></ErrorBoundary>,
+  FallbackComponent: ErrorComponent,
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { useController } from "react-hook-form";
 import PropTypes from "prop-types";
-import { withErrorBoundary } from "react-error-boundary";
+import { ErrorBoundary, withErrorBoundary } from "react-error-boundary";
 import ErrorComponent from "components/common/ErrorComponent";
 import classNames from "utils/classNames";
 
@@ -58,5 +58,5 @@ Input.propTypes = {
 };
 
 export default withErrorBoundary(Input, {
-  FallbackComponent: <ErrorComponent></ErrorComponent>,
+  FallbackComponent: ErrorComponent,
 });

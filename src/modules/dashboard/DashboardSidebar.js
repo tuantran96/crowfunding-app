@@ -5,7 +5,7 @@ import {
   IconLogout,
   IconPayment,
   IconProfile,
-  IconWithDraw,
+  IconWithdraw,
 } from "components/icons";
 import React from "react";
 import { NavLink } from "react-router-dom";
@@ -28,7 +28,7 @@ const sidebarLinks = [
     url: "/payment",
   },
   {
-    icon: <IconWithDraw></IconWithDraw>,
+    icon: <IconWithdraw></IconWithdraw>,
     title: "Withdraw",
     url: "/withdraw",
   },
@@ -53,7 +53,7 @@ const sidebarLinks = [
 
 const DashboardSidebar = () => {
   return (
-    <div className="w-full md:w-[76px] rounded-3xl bg-white shadow-[10px_10px_20px_0px_rgba(218,_213,_213,_0.15)] px-[14px] py-10 flex flex-col">
+    <div className="w-full md:w-[76px] rounded-3xl bg-white shadow-[10px_10px_20px_0px_rgba(218,_213,_213,_0.15)] px-[14px] py-10 flex flex-col flex-shrink-0">
       {sidebarLinks.map((link) => (
         <NavLink
           to={link.url}
