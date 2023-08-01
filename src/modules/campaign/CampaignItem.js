@@ -1,12 +1,12 @@
 import { IconFolder } from "components/icons";
 import React from "react";
 import { Link } from "react-router-dom";
-import CampCategory from "./parts/CampCategory";
-import CampMeta from "./parts/CampMeta";
-import CampDesc from "./parts/CampDesc";
-import CampTitle from "./parts/CampTitle";
 import CampAuthor from "./parts/CampAuthor";
+import CampCategory from "./parts/CampCategory";
+import CampDesc from "./parts/CampDesc";
 import CampImage from "./parts/CampImage";
+import CampMeta from "./parts/CampMeta";
+import CampTitle from "./parts/CampTitle";
 
 const CampaignItem = () => {
   return (
@@ -16,9 +16,9 @@ const CampaignItem = () => {
         <CampCategory></CampCategory>
         <CampTitle>Powered Kits Learning Boxes</CampTitle>
         <CampDesc>
-          Your home for indie and classic cinema has just been handed an...
+          Fun, durable and reusable boxes with eco-friendly options.
         </CampDesc>
-        <div className="flex items-start justify-between gap-x-5 mb-5">
+        <div className="flex items-start justify-between mb-5 gap-x-5">
           <CampMeta></CampMeta>
           <CampMeta></CampMeta>
         </div>

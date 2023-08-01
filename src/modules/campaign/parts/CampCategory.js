@@ -8,12 +8,12 @@ const CampCategory = ({ text = "Education", className = "text-xs" }) => {
     <Link
       to="/"
       className={classNames(
-        "flex items-center gap-x-3 mb-4 font-medium text-text3",
+        "flex items-baseline mb-4 font-medium gap-x-3 text-text3",
         className
       )}
     >
       <IconFolder></IconFolder>
-      <span className="-mb-1">{text}</span>
+      <span>{text}</span>
     </Link>
   );
 };

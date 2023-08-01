@@ -3,7 +3,7 @@ import classNames from "utils/classNames";
 
 const CampDesc = ({ children, className = "mb-4 text-xs" }) => {
   return (
-    <p className={classNames("text-text3 font-normal", className)}>
+    <p className={classNames("font-normal text-text3", className)}>
       {children}
     </p>
   );

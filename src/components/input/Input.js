@@ -1,7 +1,7 @@
 import React from "react";
 import { useController } from "react-hook-form";
 import PropTypes from "prop-types";
-import { ErrorBoundary, withErrorBoundary } from "react-error-boundary";
+import { withErrorBoundary } from "react-error-boundary";
 import ErrorComponent from "components/common/ErrorComponent";
 import classNames from "utils/classNames";
 
@@ -11,7 +11,7 @@ const Input = (props) => {
     name,
     type = "text",
     error = "",
-    placeholder,
+    placeholder = "",
     children,
     ...rest
   } = props;
@@ -26,7 +26,7 @@ const Input = (props) => {
         id={name}
         type={type}
         className={classNames(
-          "w-full px-6 py-4 text-sm font-medium border rounded-xl  placeholder:text-text4 dark:placeholder:text-text2 dark:text-white bg-transparent",
+          "w-full px-6 py-4 text-sm font-medium border rounded-xl placeholder:text-text4 dark:placeholder:text-text2 dark:text-white bg-transparent",
           error.length > 0
             ? "border-error text-error"
             : "border-strock text-text1 dark:border-darkStroke",
@@ -37,26 +37,25 @@ const Input = (props) => {
         {...field}
       />
       {error.length > 0 && (
-        <span className="text-sm font-medium text-error absolute top-2/4 -translate-y-2/4 left-6 pointer-events-none error-input">
+        <span className="absolute text-sm font-medium pointer-events-none text-error top-2/4 -translate-y-2/4 left-6 error-input">
           {error}
         </span>
       )}
       {children && (
-        <span className="absolute right-6 top-2/4 -translate-y-2/4 cursor-pointer select-none">
+        <span className="absolute cursor-pointer select-none right-6 top-2/4 -translate-y-2/4">
           {children}
         </span>
       )}
     </div>
   );
 };
-
 Input.propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
   error: PropTypes.string,
   control: PropTypes.any.isRequired,
 };
-
 export default withErrorBoundary(Input, {
+  // FallbackComponent: <ErrorComponent></ErrorComponent>,
   FallbackComponent: ErrorComponent,
 });

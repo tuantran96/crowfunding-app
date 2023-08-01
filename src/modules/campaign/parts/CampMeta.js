@@ -10,7 +10,7 @@ const CampMeta = ({
     <div className="flex flex-col gap-y-1">
       <h4
         className={classNames(
-          "text-text2 font-semibold",
+          "font-semibold text-text2",
           size === "small" ? "text-sm" : "text-xl"
         )}
       >

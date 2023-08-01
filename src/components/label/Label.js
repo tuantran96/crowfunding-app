@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import React from "react";
+import PropTypes from "prop-types";
 import classNames from "utils/classNames";
 
 const Label = (props) => {
@@ -16,7 +16,6 @@ const Label = (props) => {
     </label>
   );
 };
-
 Label.propTypes = {
   children: PropTypes.node,
   htmlFor: PropTypes.string,

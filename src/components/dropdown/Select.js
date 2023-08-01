@@ -5,7 +5,7 @@ const Select = ({ placeholder = "", className = "" }) => {
   const { toggle, show } = useDropdown();
   return (
     <div
-      className={`flex items-center justify-between py-4 px-6 bg-white border border-strock rounded-lg cursor-pointer text-text1 text-sm font-medium ${className}`}
+      className={`flex items-center justify-between py-4 px-6 bg-white border border-strock rounded-lg cursor-pointer text-sm text-text1 ${className}`}
       onClick={toggle}
     >
       <span>{placeholder}</span>
@@ -13,7 +13,7 @@ const Select = ({ placeholder = "", className = "" }) => {
         {show ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
+            className="w-4 h-4"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -28,7 +28,7 @@ const Select = ({ placeholder = "", className = "" }) => {
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
+            className="w-4 h-4"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

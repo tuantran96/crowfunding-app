@@ -3,7 +3,7 @@ import FormRow from "components/common/FormRow";
 import { Dropdown } from "components/dropdown";
 import { Input, Textarea } from "components/input";
 import { Label } from "components/label";
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useForm } from "react-hook-form";
 import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -14,7 +14,7 @@ Quill.register("modules/imageUploader", ImageUploader);
 
 const CampaignAddNew = () => {
   const { handleSubmit, control } = useForm();
-  const [content, setContent] = useState("");
+  const [content, setContent] = React.useState("");
   const handleAddNewCampaign = (values) => {};
   const modules = useMemo(
     () => ({
@@ -29,22 +29,23 @@ const CampaignAddNew = () => {
       imageUploader: {
         // imgbbAPI
         upload: async (file) => {
-          //   const bodyFormData = new FormData();
-          //   bodyFormData.append("image", file);
-          //   const response = await axios({
-          //     method: "post",
-          //     url: "https://api.imgbb.com/1/upload?key=9551b7c446c84ad919a425c1323e7cc0",
-          //     data: bodyFormData,
-          //     headers: {
-          //       "Content-Type": "multipart/form-data",
-          //     },
-          //   });
-          //   return response.data.data.url;
+          // const bodyFormData = new FormData();
+          // bodyFormData.append("image", file);
+          // const response = await axios({
+          //   method: "post",
+          //   url: imgbbAPI,
+          //   data: bodyFormData,
+          //   headers: {
+          //     "Content-Type": "multipart/form-data",
+          //   },
+          // });
+          // return response.data.data.url;
         },
       },
     }),
     []
   );
+
   return (
     <div className="bg-white rounded-xl py-10 px-[66px]">
       <div className="text-center">
@@ -100,7 +101,7 @@ const CampaignAddNew = () => {
               ></Input>
             </FormGroup>
             <FormGroup>
-              <Label>Raised Amount *</Label>
+              <Label>Raised amount *</Label>
               <Input
                 control={control}
                 name="amount"
@@ -117,8 +118,7 @@ const CampaignAddNew = () => {
                 placeholder="Amount Prefilled"
               ></Input>
               <p className="text-sm text-left text-text3">
-                It will help fill amount box by click, place each amount by{" "}
-                <br />
+                It will help fill amount box by click, place each amount by
                 comma, ex: 10,20,30,40
               </p>
             </FormGroup>
@@ -139,9 +139,9 @@ const CampaignAddNew = () => {
               </Dropdown>
             </FormGroup>
             <FormGroup>
-              <Label>Country</Label>
+              <Label>Counrty</Label>
               <Dropdown>
-                <Dropdown.Select placeholder="Select a country"></Dropdown.Select>
+                <Dropdown.Select placeholder="Select country"></Dropdown.Select>
                 <Dropdown.List></Dropdown.List>
               </Dropdown>
             </FormGroup>
@@ -164,9 +164,9 @@ const CampaignAddNew = () => {
               ></Input>
             </FormGroup>
           </FormRow>
-          <div className="text-center mt-10">
-            <Button className="bg-primary text-white mx-auto px-10">
-              Submit new campaign
+          <div className="mt-10 text-center">
+            <Button className="px-10 mx-auto text-white bg-primary">
+              Submit new campaign{" "}
             </Button>
           </div>
         </form>

@@ -11,22 +11,22 @@ const Button = ({
   ...rest
 }) => {
   const child = !!isLoading ? (
-    <div className="w-10 h-10 border-4 border-white rounded-full border-t-transparent animate-spin border-b-transparent"></div>
+    <div className="w-10 h-10 border-4 border-white rounded-full border-t-transparent border-b-transparent animate-spin"></div>
   ) : (
     children
   );
-  let defaulClassName =
-    "flex items-center justify-center p-4 min-h-[56px] text-base font-semibold rounded-xl";
+  let defaultClassName =
+    "flex items-center justify-center p-4 text-base font-semibold rounded-xl min-h-[56px]";
   switch (rest.kind) {
     case "primary":
-      defaulClassName = defaulClassName + " bg-primary text-white";
+      defaultClassName = defaultClassName + " bg-primary text-white";
       break;
     case "secondary":
-      defaulClassName = defaulClassName + " bg-secondary text-white";
+      defaultClassName = defaultClassName + " bg-secondary text-white";
       break;
     case "ghost":
-      defaulClassName =
-        defaulClassName + " bg-secondary bg-opacity-10 text-secondary";
+      defaultClassName =
+        defaultClassName + " bg-secondary bg-opacity-10 text-secondary";
       break;
 
     default:
@@ -34,25 +34,24 @@ const Button = ({
   }
   if (rest.href)
     return (
-      <Link className={classNames(defaulClassName, className)} to={rest.href}>
+      <Link to={rest.href} className={classNames(defaultClassName, className)}>
         {child}
       </Link>
     );
   return (
     <button
-      type={type}
       className={classNames(
-        defaulClassName,
+        defaultClassName,
         !!isLoading ? "opacity-50 pointer-events-none" : "",
         className
       )}
+      type={type}
       {...rest}
     >
       {child}
     </button>
   );
 };
-
 Button.propTypes = {
   type: PropTypes.string,
   className: PropTypes.string,
@@ -61,5 +60,4 @@ Button.propTypes = {
   href: PropTypes.string,
   kind: PropTypes.oneOf(["primary", "secondary", "ghost"]),
 };
-
 export default Button;

@@ -1,51 +1,12 @@
-import { Button } from "components/button";
 import Overlay from "components/common/Overlay";
-import CampaignPerk from "modules/campaign/CampaignPerk";
 import DashboardSidebar from "modules/dashboard/DashboardSidebar";
 import DashboardTopbar from "modules/dashboard/DashboardTopbar";
 import React from "react";
-import ReactModal from "react-modal";
 import { Outlet } from "react-router-dom";
 
 const LayoutDashboard = ({ children }) => {
   return (
-    <div className="p-10 bg-lite min-h-screen">
-      <ReactModal
-        isOpen={false}
-        overlayClassName="modal-overlay fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center"
-        className="modal-content w-full max-w-[521px] bg-white rounded-2xl outline-none p-10 relative max-h-[90vh] overflow-y-auto scroll-hidden"
-      >
-        <button className="w-11 h-11 flex items-center justify-center absolute right-10 top-[10px] z-10 text-text1 cursor-pointer">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
-        <h2 className="font-bold text-[25px] mb-10 text-center">
-          Back this project
-        </h2>
-        <p className="text-sm mb-3">Enter the contribute amount</p>
-        <input
-          type="text"
-          placeholder="$10"
-          name="amount"
-          className="text-lg font-medium py-3 px-5 border border-strock w-full rounded"
-        ></input>
-        <p className="text-text3 my-5 text-sm">
-          Contribution are not associatied with perks
-        </p>
-        <Button className="bg-primary text-white">Continue</Button>
-        <div className="mt-[60px]"></div>
-        <CampaignPerk showButton></CampaignPerk>
-      </ReactModal>
+    <div className="min-h-screen p-10 bg-lite">
       <Overlay></Overlay>
       <DashboardTopbar></DashboardTopbar>
       <div className="flex items-start gap-x-10">

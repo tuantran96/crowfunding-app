@@ -6,7 +6,7 @@ const Heading = ({ children, className = "", number = null }) => {
     <h2
       className={classNames("text-lg font-semibold text-text1 mb-5", className)}
     >
-      {children}{" "}
+      {children}
       {number && <span className="text-secondary">{`(${number})`}</span>}
     </h2>
   );

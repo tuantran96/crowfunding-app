@@ -7,7 +7,7 @@ const CampImage = ({ className = "h-[158px]", image = defaultImage }) => {
       <img
         src={image}
         alt=""
-        className="w-full h-full object-cover rounded-2xl"
+        className="object-cover w-full h-full rounded-2xl"
       />
     </div>
   );
