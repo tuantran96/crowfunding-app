@@ -10,6 +10,7 @@ import CampImage from "./parts/CampImage";
 import CampMeta from "./parts/CampMeta";
 import CampTitle from "./parts/CampTitle";
 import CampViewAuthor from "./parts/CampViewAuthor";
+import { v4 } from "uuid";
 
 const CampaignView = () => {
   return (
@@ -25,6 +26,7 @@ const CampaignView = () => {
               .fill(0)
               .map((item, index) => (
                 <img
+                  key={v4()}
                   src="https://source.unsplash.com/random"
                   className="w-[89px] h-[70px] object-cover rounded-lg"
                   alt=""
