@@ -1,17 +1,19 @@
-import FormGroup from "components/common/FormGroup";
-import FormRow from "components/common/FormRow";
-import { Dropdown } from "components/dropdown";
-import { Input, Textarea } from "components/input";
-import { Label } from "components/label";
-import React, { useEffect, useMemo, useState } from "react";
-import { useForm } from "react-hook-form";
+import useOnChange from "hooks/useOnChange";
 import ReactQuill, { Quill } from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import React, { useEffect, useMemo, useState } from "react";
 import ImageUploader from "quill-image-uploader";
+import FormRow from "components/common/FormRow";
+import FormGroup from "components/common/FormGroup";
+import DatePicker from "react-date-picker";
 import axios from "axios";
-import { Button } from "components/button";
-import useOnChange from "hooks/useOnchange";
+import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { Label } from "components/label";
+import { Input, Textarea } from "components/input";
+import { Dropdown } from "components/dropdown";
+import { Button } from "components/button";
+import "react-quill/dist/quill.snow.css";
+
 Quill.register("modules/imageUploader", ImageUploader);
 
 const CampaignAddNew = () => {
@@ -71,6 +73,8 @@ const CampaignAddNew = () => {
     }
     fetchCountries();
   }, [filterCountry]);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   return (
     <div className="bg-white rounded-xl py-10 px-[66px]">
@@ -197,19 +201,30 @@ const CampaignAddNew = () => {
           <FormRow>
             <FormGroup>
               <Label>Start Date</Label>
-              <Input
+              <DatePicker
+                onChange={setStartDate}
+                value={startDate}
+                format="dd-MM-yyyy"
+              />
+              {/* <Input
                 control={control}
                 name="start_date"
                 placeholder="Start Date"
-              ></Input>
+                type="date"
+              ></Input> */}
             </FormGroup>
             <FormGroup>
               <Label>End Date</Label>
-              <Input
+              <DatePicker
+                onChange={setEndDate}
+                value={endDate}
+                format="dd-MM-yyyy"
+              />
+              {/* <Input
                 control={control}
                 name="end_date"
                 placeholder="End Date"
-              ></Input>
+              ></Input> */}
             </FormGroup>
           </FormRow>
           <div className="mt-10 text-center">
