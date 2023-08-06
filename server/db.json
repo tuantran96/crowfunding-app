@@ -1,5 +1,30 @@
 {
   "users": [],
   "categories": [],
-  "campaigns": []
+  "campaigns": [
+    {
+      "title": "Building Hope Village",
+      "short_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis unde quo doloribus, quisquam commodi eaque repudiandae ipsum architecto, eos, fugit provident nihil reprehenderit obcaecati! Nesciunt quibusdam distinctio cumque a repudiandae.",
+      "goal": "200",
+      "amount": "100",
+      "prefilled": "10.20",
+      "video": "https://www.youtube.com/watch?v=mJqkmlAvdpg",
+      "country": "Vietnam",
+      "startDate": "2023-08-04T13:37:10.309Z",
+      "endDate": "2023-08-17T17:00:00.000Z",
+      "id": 1
+    },
+    {
+      "title": "",
+      "short_description": "",
+      "goal": "",
+      "amount": "",
+      "prefilled": "",
+      "video": "",
+      "featured_image": "https://source.unsplash.com/random",
+      "startDate": "2023-08-06T06:24:11.763Z",
+      "endDate": "2023-08-06T06:24:11.763Z",
+      "id": 2
+    }
+  ]
 }
