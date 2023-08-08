@@ -18,15 +18,15 @@ const LayoutPayment = ({ back = "/" }) => {
           </div>
           <Link to={back} className="flex items-center gap-x-2">
             <svg
-              width="24"
-              height="24"
+              width={24}
+              height={24}
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M17.1713 18.277L10.4306 12.3975C10.2225 12.216 10.201 11.9001 10.3825 11.692C10.3971 11.6753 10.4128 11.6595 10.4295 11.6449L17.1702 5.72823C17.3777 5.54607 17.6936 5.56664 17.8758 5.77417C17.9558 5.8654 18 5.98263 18 6.10401V17.9002C18 18.1764 17.7761 18.4002 17.5 18.4002C17.3792 18.4002 17.2624 18.3565 17.1713 18.277Z"
                 fill="#A2A2A8"
               />
@@ -35,6 +35,7 @@ const LayoutPayment = ({ back = "/" }) => {
                 fill="#A2A2A8"
               />
             </svg>
+
             <span className="text-sm font-semibold leading-normal text-primary">
               Back
             </span>

@@ -55,6 +55,7 @@ input:focus + .error-input {
 .scroll-hidden::-webkit-scrollbar {
   display: none;
 }
+
 // custom date picker
 body {
   .react-date-picker {
@@ -81,8 +82,14 @@ body {
   .react-calendar__navigation button:enabled:focus {
     @apply bg-transparent;
   }
-  .react-calendar__tile:not(.react-calendar__tile--active, .react-calendar__tile--now):enabled:hover,
-  .react-calendar__tile:not(.react-calendar__tile--active, .react-calendar__tile--now):enabled:focus {
+  .react-calendar__tile:not(
+      .react-calendar__tile--active,
+      .react-calendar__tile--now
+    ):enabled:hover,
+  .react-calendar__tile:not(
+      .react-calendar__tile--active,
+      .react-calendar__tile--now
+    ):enabled:focus {
     @apply bg-transparent text-primary;
   }
   .react-calendar__tile--active:enabled:hover,
@@ -97,4 +104,9 @@ body {
   .react-calendar__tile--now:hover {
     @apply bg-secondary text-white rounded-lg;
   }
+}
+.ql-snow .ql-editor img {
+  width: 100%;
+  object-fit: cover;
+  height: 500px;
 }

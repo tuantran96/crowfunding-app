@@ -1,6 +1,6 @@
 import useOnChange from "hooks/useOnChange";
 import ReactQuill, { Quill } from "react-quill";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import ImageUploader from "quill-image-uploader";
 import ImageUpload from "components/image/ImageUpload";
 import FormRow from "components/common/FormRow";
@@ -8,7 +8,6 @@ import FormGroup from "components/common/FormGroup";
 import DatePicker from "react-date-picker";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { Label } from "components/label";
 import { Input, Textarea } from "components/input";
@@ -16,6 +15,7 @@ import { Dropdown } from "components/dropdown";
 import { Button } from "components/button";
 import { apiURL, imgbbAPI } from "config/config";
 import "react-quill/dist/quill.snow.css";
+
 Quill.register("modules/imageUploader", ImageUploader);
 
 const categoriesData = ["architecture", "education"];
@@ -24,7 +24,6 @@ const CampaignAddNew = () => {
   useEffect(() => {
     toast.success("Create campaign successfully");
   });
-
   const { handleSubmit, control, setValue, reset, watch } = useForm();
   const getDropdownLabel = (name, defaultValue = "") => {
     const value = watch(name) || defaultValue;
@@ -79,6 +78,7 @@ const CampaignAddNew = () => {
     }),
     []
   );
+
   const handleSelectDropdownOption = (name, value) => {
     setValue(name, value);
   };
@@ -100,6 +100,7 @@ const CampaignAddNew = () => {
   }, [filterCountry]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+
   return (
     <div className="bg-white rounded-xl py-10 px-[66px]">
       <div className="text-center">
@@ -213,14 +214,14 @@ const CampaignAddNew = () => {
               </Dropdown>
             </FormGroup>
             <FormGroup>
-              <Label>Country</Label>
+              <Label>Counrty</Label>
               <Dropdown>
                 <Dropdown.Select
                   placeholder={getDropdownLabel("country", "Select country")}
                 ></Dropdown.Select>
                 <Dropdown.List>
                   <Dropdown.Search
-                    placeholder="Search country..."
+                    placeholder="Search country ..."
                     onChange={setFilterCountry}
                   ></Dropdown.Search>
                   {countries.length > 0 &&
@@ -244,7 +245,6 @@ const CampaignAddNew = () => {
           <FormRow>
             <FormGroup>
               <Label>Start Date</Label>
-
               <DatePicker
                 onChange={setStartDate}
                 value={startDate}
