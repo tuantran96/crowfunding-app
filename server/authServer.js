@@ -49,16 +49,28 @@ app.get("/me", verifyToken, (req, res) => {
   if (!user) return res.sendStatus(401);
   res.json(user);
 });
-app.post("/auth/signin", (req, res) => {
-  const username = req.body.username;
+app.post("/auth/login", (req, res) => {
+  const email = req.body.email;
   const user = users.find((user) => {
-    return user.username === username;
+    return user.email === email;
   });
   if (!user) return res.sendStatus(401);
-  const tokens = generateTokens(user);
+  const dbPassword = user.password;
+  console.log(
+    "🚀 ~ file: authServer.js:59 ~ app.post ~ dbPassword:",
+    dbPassword
+  );
+  console.log(
+    "🚀 ~ file: authServer.js:59 ~ app.post ~ dbPassword:",
+    req.body.password
+  );
+  bcrypt.compare(req.body.password, dbPassword, (err, hash) => {
+    if (err || !hash) return;
+    const tokens = generateTokens(user);
 
-  updateRefreshToken(username, tokens.refreshToken);
-  res.json(tokens);
+    updateRefreshToken(user.username, tokens.refreshToken);
+    res.json(tokens);
+  });
 });
 
 app.post("/token", (req, res) => {
