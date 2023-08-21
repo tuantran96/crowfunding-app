@@ -86,7 +86,7 @@ app.post("/token", (req, res) => {
   });
 });
 
-app.post("/auth/signup", (req, res) => {
+app.post("/auth/register", (req, res) => {
   const { name, password, email } = req.body;
   const user = users.find((user) => {
     return user.email === email;
