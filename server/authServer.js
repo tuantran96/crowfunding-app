@@ -24,7 +24,7 @@ const generateTokens = (payload) => {
     { id, username },
     process.env.REFRESH_TOKEN_SECRET,
     {
-      expiresIn: "1h",
+      expiresIn: "48h",
     }
   );
 
@@ -56,16 +56,15 @@ app.post("/auth/login", (req, res) => {
   });
   if (!user) return res.sendStatus(401);
   const dbPassword = user.password;
-  console.log(
-    "🚀 ~ file: authServer.js:59 ~ app.post ~ dbPassword:",
-    dbPassword
-  );
-  console.log(
-    "🚀 ~ file: authServer.js:59 ~ app.post ~ dbPassword:",
-    req.body.password
-  );
   bcrypt.compare(req.body.password, dbPassword, (err, hash) => {
-    if (err || !hash) return;
+    if (err || !hash) {
+      res.status(403).json({
+        statusCode: 403,
+        error: {
+          message: "Password does not match",
+        },
+      });
+    }
     const tokens = generateTokens(user);
 
     updateRefreshToken(user.username, tokens.refreshToken);
@@ -80,22 +79,15 @@ app.post("/token", (req, res) => {
     return user.refreshToken === refreshToken;
   });
   if (!user) return res.sendStatus(403);
-  const dbPassword = user.password;
-  bcrypt.compare(req.body.password, dbPassword, (err, result) => {
-    if (!result) {
-      res.sendStatus(400).json({ error: "Invalid password" });
-    } else {
-      try {
-        jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
-        const tokens = generateTokens(user);
-        updateRefreshToken(user.username, tokens.refreshToken);
-        res.json(tokens);
-      } catch (err) {
-        console.log(err);
-        res.sendStatus(403);
-      }
-    }
-  });
+  try {
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    const tokens = generateTokens(user);
+    updateRefreshToken(user.username, tokens.refreshToken);
+    res.json(tokens);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(403);
+  }
 });
 
 app.post("/auth/register", (req, res) => {

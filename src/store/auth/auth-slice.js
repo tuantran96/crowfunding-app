@@ -27,7 +27,6 @@ const authSlice = createSlice({
     authRefreshToken: (state, action) => ({}),
   },
 });
-
 export const {
   authLogin,
   authRegister,

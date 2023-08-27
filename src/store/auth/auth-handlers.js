@@ -1,11 +1,12 @@
+import { toast } from "react-toastify";
 import { call, put } from "redux-saga/effects";
+import { saveToken } from "utils/auth";
 import {
   requestAuthFetchMe,
   requestAuthLogin,
+  requestAuthRefreshToken,
   requestAuthRegister,
 } from "./auth-requests";
-import { toast } from "react-toastify";
-import { saveToken } from "utils/auth";
 import { authUpdateUser } from "./auth-slice";
 
 export default function* handleAuthRegister(action) {
@@ -13,13 +14,12 @@ export default function* handleAuthRegister(action) {
   try {
     const response = yield call(requestAuthRegister, payload);
     if (response.status === 201) {
-      toast.success("Created new account successsfully");
+      toast.success("Created new account successfully");
     }
   } catch (error) {
-    console.log("🚀 ~ file: auth-handlers.js:18 ~ error:", error);
+    console.log(error);
   }
 }
-
 function* handleAuthLogin({ payload }) {
   try {
     const response = yield call(requestAuthLogin, payload);
@@ -27,7 +27,6 @@ function* handleAuthLogin({ payload }) {
       saveToken(response.data.accessToken, response.data.refreshToken);
       yield call(handleAuthFetchMe, { payload: response.data.accessToken });
     }
-    yield 1;
   } catch (error) {
     const response = error.response.data;
     if (response.statusCode === 403) {
@@ -49,9 +48,21 @@ function* handleAuthFetchMe({ payload }) {
       );
     }
     // response.data -> userInfo
-  } catch (error) {
-    console.log("🚀 ~ file: auth-handlers.js:46 ~ error:", error);
-  }
+  } catch (error) {}
 }
 
-export { handleAuthLogin, handleAuthFetchMe };
+function* handleAuthRefreshToken({ payload }) {
+  try {
+    const response = yield call(requestAuthRefreshToken, payload);
+    if (response.data) {
+      saveToken(response.data.accessToken, response.data.refreshToken);
+      yield call(handleAuthFetchMe, {
+        payload: response.data.accessToken,
+      });
+    } else {
+      // Logout
+    }
+  } catch (error) {}
+}
+
+export { handleAuthLogin, handleAuthFetchMe, handleAuthRefreshToken };

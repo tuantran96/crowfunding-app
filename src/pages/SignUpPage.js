@@ -42,7 +42,7 @@ const SignUpPage = () => {
       dispatch(authRegister(values));
       reset({});
     } catch (error) {
-      console.log("🚀 ~ file: SignUpPage.js:43 ~ handleSignUp ~ error:", error);
+      console.log(error);
     }
   };
   const { value: acceptTerm, handleToggleValue: handleToggleTerm } =
